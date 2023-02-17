@@ -60,6 +60,32 @@ public class JanelaCadastroPessoa extends JFrame {
 		textField_1.setBounds(133, 38, 86, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
+		
+		ButtonSalvar = new JButton("Salvar");
+		ButtonSalvar.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+
+		String nome= txtNome.getText();
+		String cpf = textCPF.getText();
+		if (nome.isEmpty()) {
+		JOptionPane.showMessageDialog(null, "Nenhum nome foi preenchido");
+		}
+		if (cpf.isEmpty()) {
+		JOptionPane.showMessageDialog(null, "Nenhum CPF foi preenchido");
+		}
+		Funcionaria func = new Funcionaria();
+		func.setNome(nome);
+		func.setCpf(Long.valueOf(cpf));
+
+		FuncionarioDAO bdPessoa = FuncionarioDAO.getInstance();
+		bdPessoa.inserir(func);
+
+		}
+		});
+		ButtonSalvar.setBounds(129, 85, 89, 23);
+		contentPane.add(ButtonSalvar);
+
+		}
 	}
 
 }
