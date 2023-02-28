@@ -5,9 +5,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controle.FuncionarioDAO;
+import modelo.Funcionario;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JanelaCadastroPessoa extends JFrame {
 
@@ -61,31 +69,30 @@ public class JanelaCadastroPessoa extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		ButtonSalvar = new JButton("Salvar");
-		ButtonSalvar.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-
-		String nome= txtNome.getText();
-		String cpf = textCPF.getText();
-		if (nome.isEmpty()) {
-		JOptionPane.showMessageDialog(null, "Nenhum nome foi preenchido");
-		}
-		if (cpf.isEmpty()) {
-		JOptionPane.showMessageDialog(null, "Nenhum CPF foi preenchido");
-		}
-		Funcionaria func = new Funcionaria();
-		func.setNome(nome);
-		func.setCpf(Long.valueOf(cpf));
-
-		FuncionarioDAO bdPessoa = FuncionarioDAO.getInstance();
-		bdPessoa.inserir(func);
-
-		}
+		JButton btnNewButton = new JButton("Salvar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nome = txtNomeFuncionario.getText();
+				String cpf = txtCpfFuncionario.getText();
+				if(nome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nenhum nome foi informado.");
+				}
+				if(cpf.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nenhum CPF foi informado.");
+				}
+				Funcionario func = new Funcionario();
+				func.setNome(nome);
+				func.setCpf(Long.valueOf(cpf));
+				
+				FuncionarioDAO bdPessoa = FuncionarioDAO.getInstance();
+				bdPessoa.inserir(func);
+				
+			}
 		});
-		ButtonSalvar.setBounds(129, 85, 89, 23);
-		contentPane.add(ButtonSalvar);
-
+		btnNewButton.setBounds(97, 66, 122, 20);
+		contentPane.add(btnNewButton);
+		
 		}
 	}
 
-}
+
