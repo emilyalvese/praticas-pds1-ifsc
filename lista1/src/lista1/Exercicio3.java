@@ -5,14 +5,12 @@ import javax.swing.JOptionPane;
 public class Exercicio3 {
 
 	public static void main(String[] args) {
-    Double N1 = 0.0;
-    Double N2 = 0.0;
+		Double N1 = 0.0;
+		Double N2 = 0.0;
 		Double N3 = 0.0;
-		
 		String Nt1 = JOptionPane.showInputDialog("Insira a primeira nota do discente: ");
 		String Nt2 = JOptionPane.showInputDialog("Insira a segunda nota do discente: ");
 		String Nt3 = JOptionPane.showInputDialog("Insira a terceira nota do discente: ");
-		
 		N1 = Double.valueOf(Nt1);
 		N2 = Double.valueOf(Nt2);
 		N3 = Double.valueOf(Nt3);
